@@ -1,21 +1,29 @@
-var Board = function( selector ) {
-  // Your board related code goes here
-  
-  // Use $elem to access the DOM element for this board
-  var $elem = $( selector );
-  
-  function initialize() {
-    // What needs to happen when this object is created?
-  };
+var index = 2;
 
-  initialize();
+
+var PostIt = function(e) {
+    var $post_it = $("#master").clone();
+    $post_it.css({'top': e.pageY + 'px', 'left': e.pageX + 'px', display: 'block', 'z-index': ++index})
+    .draggable({ handle: ".header" });
+    $post_it.on("click", function(e){
+      e.stopPropagation();
+    });
+    $post_it.on("mousedown", function(e){
+      $(this).css({'z-index': ++index});
+    });
+    $("#board").append($post_it);
 };
 
-var PostIt = function() {
-  // Your post-it related code goes here
-};
+$(".post-it").on("click", function(e){
+  console.log("post-it clicked")
+  // e.preventDefault.stopPropagation();
+});
 
-$(function() {
-  // This code will run when the DOM has finished loading
-  Board.new('#board');
+$("#board").on("click", function(e){
+  console.log(e.target)
+  if (e.target.className != "content" &&
+      e.target.className != "header" &&
+      e.target.className != "post-it"){
+    myPostIt = new PostIt(e)
+  }
 });

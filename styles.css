@@ -8,16 +8,19 @@
 
 .post-it {
   position: absolute !important;
-  width: 160px;
+  width: 200px;
+  height:180px;
   background-color: yellow;
   box-shadow: -2px 2px 5px #555;
   overflow: hidden;
+  display: none;
 }
 
 .post-it .header {
   background-color: #c2c25b;
   text-align: right;
   padding: 2px;
+  height: 20px;
 }
 
 .post-it .header:hover {
