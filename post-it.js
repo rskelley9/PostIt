@@ -1,6 +1,5 @@
 var index = 2;
 
-
 var PostIt = function(e) {
     var $post_it = $("#master").clone();
     $post_it.css({'top': e.pageY + 'px', 'left': e.pageX + 'px', display: 'block', 'z-index': ++index})
@@ -13,11 +12,6 @@ var PostIt = function(e) {
     });
     $("#board").append($post_it);
 };
-
-$(".post-it").on("click", function(e){
-  console.log("post-it clicked")
-  // e.preventDefault.stopPropagation();
-});
 
 $("#board").on("click", function(e){
   console.log(e.target)
