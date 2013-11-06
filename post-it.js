@@ -11,17 +11,16 @@ Id.prototype.incrementId = function(){
 function Postit(id){
   this.content = null
   this.id = id
+}
 
-  // this.init = function(){
-  //   this.id = generateId();
-  // }
-
-
+Postit.prototype.addIdAttribute = function(){
+  $('div #master').attr("id", "master"+""+ self.id +"");
 }
 
 
 Postit.prototype.render = function(){
-  $("#master").clone()
+  postIt = $("#master").clone()
+  postIt.addIdAttribute();
 
 }
 
@@ -31,23 +30,24 @@ function Board(){
 
 
 $(document).ready(function(){
-     newid = new Id()
 
-  $("body#board").on("click", function(){
+ newid = new Id()
 
-    newid.incrementId();
+ $("body#board").on("click", function(){
 
-    postItId = newid.idCounter
+  newid.incrementId();
 
-    postIt = new Postit(postItId)
+  postItId = newid.idCounter
 
-    // postIt.render
+  postIt = new Postit(postItId)
 
-    console.log(postItId)
+  postIt.render
+
+  console.log(postItId)
 
 
 
-  })
+})
 
 
 });
