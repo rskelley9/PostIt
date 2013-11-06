@@ -11,16 +11,17 @@ Id.prototype.incrementId = function(){
 function Postit(id){
   this.content = null
   this.id = id
+  this.render = false
 }
 
 Postit.prototype.addIdAttribute = function(){
-  $('div #master').attr("id", "master"+""+ self.id +"");
+  this.rendered = $('div #master').attr("id", "master"+""+ self.id +"");
 }
 
 
 Postit.prototype.render = function(){
-  postIt = $("#master").clone()
-  postIt.addIdAttribute();
+  this.rendered = $("#master").clone()
+  this.addIdAttribute();
 
 }
 
